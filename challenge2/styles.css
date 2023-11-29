@@ -1,5 +1,5 @@
 p {
-    padding-left: 30px;
+    margin-left: 30px;
 }
 
 h1 + p {
@@ -14,18 +14,13 @@ h3 ~ p {
     text-decoration: none;
 }
 
-h1 + p + p {
+h1 + p + p, 
+h1 + p + p + p {
     color: grey;
 }
 
-h1 + p + p +p {
-    color: grey;
-}
-
-h3 + p + p {
-    color: blue;
-}
-
-h3 + p + p +p {
+h3 + p + p,
+h3 + p + p + p
+ {
     color: blue;
 }
