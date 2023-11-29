@@ -1,0 +1,10 @@
+* {
+    background-color: beige;
+}
+
+p {
+    margin: 40px;
+    text-align: center;
+    color:rgb(31, 31, 152);
+    font-size: 18px;
+}
