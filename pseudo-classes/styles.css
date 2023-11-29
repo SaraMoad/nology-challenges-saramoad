@@ -1,0 +1,15 @@
+div {
+    margin: 10px;
+}
+
+input {
+    border-radius: 3px;
+}
+input:enabled {
+    background-color: lightblue;
+    border-radius: 3px;
+}
+
+input:required {
+    border: 2px solid red;   
+}
