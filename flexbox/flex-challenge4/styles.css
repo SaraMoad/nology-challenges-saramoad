@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 600px;
+    border: 3px solid black;
+}
+
+
+.column-cards {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+#lightBlue {
+    background-color: lightblue;
+}
+
+#lightOrange {
+    background-color: orange;
+}
+
+#salmon {
+    background-color: salmon;
+}
+
+#crimson {
+    background-color: crimson;
+}
+
+#lightGreen {
+    background-color: lightgreen;
+}
+
+#grey {
+    background-color: lightgrey;
+}
+
+#aqua {
+    background-color: aliceblue;
+}
+
+#skyBlue {
+    background-color: skyblue;
+}
