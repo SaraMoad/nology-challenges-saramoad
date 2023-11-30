@@ -9,17 +9,14 @@ body {
     height: 300px;
     align-items: center;
     justify-content: center;
-    /* justify-items: center; */
-
 }
 
-.card-1, .card-2, .card-3 {
+.container div {
     display: flex;
     align-items: center; 
     justify-content: center; 
     width: 300px;
     height: 300px;
-
 }
 
 .card-1 {
