@@ -1,0 +1,18 @@
+
+@mixin font-weight-align {
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+};
+
+@mixin border($border) {
+    border: $border
+}
+;
+@mixin flex-column-gap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+};
+
+

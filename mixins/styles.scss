@@ -1,0 +1,25 @@
+@use "./partials/mixins.scss";
+
+* {
+    margin: 0;
+}
+
+section {
+    @include mixins.flex-column-gap; 
+    padding: 10px;
+}
+.button {
+    @include mixins.font-weight-align;
+    background-color: lightgrey;
+    @include mixins.border(1px dotted red);
+}
+
+.chip {
+    @include mixins.font-weight-align;
+    @include mixins.border(1px solid blue);
+}
+
+.pill {
+    @include mixins.font-weight-align;
+    @include mixins.border(1px dashed blue);
+}
