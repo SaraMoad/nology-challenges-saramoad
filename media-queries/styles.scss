@@ -1,0 +1,31 @@
+@use "./partials/mixins.scss";
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    @media only screen and (max-width:600px) {
+        flex-direction: column;
+    }
+
+}
+
+.flag__stripe__1 {
+    @include mixins.sm-screen(black);
+    @include mixins.large-screen(black);
+    @include mixins.largest-screen(green);
+
+}
+
+.flag__stripe__2 {
+        @include mixins.sm-screen(yellow);
+        @include mixins.large-screen(yellow);
+        @include mixins.largest-screen(white);
+}
+
+.flag__stripe__3 {
+    @include mixins.sm-screen(red);
+    @include mixins.large-screen(red);
+    @include mixins.largest-screen(orange);
+}
