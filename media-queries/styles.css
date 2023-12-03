@@ -1,0 +1,86 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+@media only screen and (max-width: 600px) {
+  section {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flag__stripe__1 {
+    height: 75px;
+    width: 250px;
+    background-color: black;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .flag__stripe__1 {
+    height: 200px;
+    width: 100px;
+    background-color: black;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 901px) {
+  .flag__stripe__1 {
+    height: 200px;
+    width: 100px;
+    background-color: green;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flag__stripe__2 {
+    height: 75px;
+    width: 250px;
+    background-color: yellow;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .flag__stripe__2 {
+    height: 200px;
+    width: 100px;
+    background-color: yellow;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 901px) {
+  .flag__stripe__2 {
+    height: 200px;
+    width: 100px;
+    background-color: white;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flag__stripe__3 {
+    height: 75px;
+    width: 250px;
+    background-color: red;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .flag__stripe__3 {
+    height: 200px;
+    width: 100px;
+    background-color: red;
+    display: flex;
+  }
+}
+@media only screen and (min-width: 901px) {
+  .flag__stripe__3 {
+    height: 200px;
+    width: 100px;
+    background-color: orange;
+    display: flex;
+  }
+}
