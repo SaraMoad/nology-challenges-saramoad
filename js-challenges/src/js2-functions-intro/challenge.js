@@ -17,6 +17,7 @@
  * @returns {string} John Smith
  */
 export const createFullName = (firstName, lastName) => {
+  // return `${firstName} ${lastName}` - this is cleaner.
   const fullName = firstName.concat(" ", lastName);
   return fullName;
 };
@@ -30,6 +31,7 @@ export const createFullName = (firstName, lastName) => {
  * @returns {number} 100
  */
 export const findSmallestNumber = (num1, num2) => {
+  // no need for a variable just return  the teriary operator.
   const smallestNumber = num1 <= num2 ? num1 : num2;
   return smallestNumber;
 };
@@ -45,6 +47,7 @@ export const findSmallestNumber = (num1, num2) => {
 export const multiplyNumbers = (num1, num2) => {
   return num1 * num2;
 };
+// could also be const multiplyNumbers = (num1, num2) => num1 * num2;
 
 /* Intermediate Challenges */
 
@@ -109,6 +112,11 @@ export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
  * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score) => {
+  // can make the if statement typeof score === "number" ten run code.
+  // make it so its >= and then you dont need to check both due to it going from top to bottom
+  // add the cases to the top if statement that then runs the block.
+  // best is to get the code to exit out earlier and then no nesting.
+
   if (typeof score != "number") {
     return "Score unavailable";
   }
