@@ -93,7 +93,7 @@ console.log("total: " + pointCounter(5, 2));
 // Given two numbers, return true if the sum of both numbers is less than 100. Otherwise return false.
 
 function lessThan100(num1, num2) {
-  const result = num1 + num2 <= 100 ? true : false;
+  const result = num1 + num2 < 100 ? true : false;
   return result;
 }
 
