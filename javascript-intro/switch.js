@@ -41,98 +41,66 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-const parent1 = "green";
-const parent2 = "green ";
+const parent1 = "brown";
+const parent2 = "brown";
 let childEyeRandom = 0;
 let childEyeColor = "";
 
-switch ((parent1, parent2)) {
-  case "blue":
-  case "Blue":
-    switch (parent2) {
-      case "blue":
-      case "Blue":
-        console.log(
-          "the chances of your child having blue eyes is 99%, brown is 0% and green is 1%"
-        );
-        childEyeRandom = getRandomInt(101);
-        childEyeColor = childEyeColor > 1 ? "blue" : "green";
-        break;
-      case "green":
-      case "Green":
-        console.log(
-          "the chances of your child having blue eyes is 50%, brown is 0% and green is 50%"
-        );
-        childEyeRandom = getRandomInt(101);
-        childEyeColor = childEyeRandom >= 50 ? "blue" : "green";
-        break;
-      case "brown":
-      case "Brown":
-        console.log(
-          "the chances of your child having blue eyes is 50%, brown is 50% and green is 0%"
-        );
-        childEyeRandom = getRandomInt(101);
-        childEyeColor = childEyeRandom >= 50 ? "blue" : "brown";
-        break;
-    }
-    break;
-  case "green":
-  case "Green":
-    switch (parent2) {
-      case "brown":
-      case "Brown":
-        console.log(
-          "the chances of your child having blue eyes is 12.5%, brown is 50% and green is 37.5%"
-        );
-        childEyeRandom = getRandomInt(101);
-        if (childEyeRandom <= 13) {
-          childEyeColor = "blue";
-        } else if (childEyeRandom <= 64) {
-          childEyeColor = "brown";
-        } else {
-          childEyeColor = "green";
-        }
-        break;
-      case "green":
-      case "Green":
-        console.log(
-          "the chances of your child having blue eyes is 25%, brown is <1% and green is 75%"
-        );
-        childEyeRandom = getRandomInt(101);
-        if (childEyeRandom < 1) {
-          childEyeColor = "brown";
-        } else if (childEyeRandom <= 25) {
-          childEyeColor = "blue";
-        } else {
-          childEyeColor = "green";
-        }
-        break;
-    }
-    break;
-  case ("Brown", "brown"):
-  case ("brown", "Brown"):
-  case ("Brown", "Brown"):
-  case ("brown", "brown"):
-    console.log(
-      "the chances of your child having blue eyes is 6.25%, brown is 75% and green is 18.75%"
-    );
-    childEyeRandom = getRandomInt(101);
-    if (childEyeRandom <= 7) {
-      childEyeColor = "blue";
-    } else if (childEyeRandom <= 82) {
-      childEyeColor = "brown";
-    } else {
-      childEyeColor = "green";
-    }
-    break;
-  default:
-    console.log("this is not a valid colour");
-}
-
-// Given the eye colour of each parent, it should console log the probability of their child having different eye colours, for example: Your eye colours are brown and blue, the chances of your child having blue eyes is --%, brown is --% and green is --%
-// Use the following image as a reference
-// Bonus:
-// Store the value of the child’s eye colour and write a switch statement - depending on the child’s eye colour consol log if it's your favourite eye colour, your least favourite eye colour or the mediocre colour
+if (parent1 === "green" && parent2 === "green") {
+  console.log(
+    "the chances of your child having blue eyes is 25%, brown is <1% and green is 75%"
+  );
+  childEyeRandom = getRandomInt(101);
+  if (childEyeRandom < 1) {
+    childEyeColor = "brown";
+  } else if (childEyeRandom <= 25) {
+    childEyeColor = "blue";
+  } else {
+    childEyeColor = "green";
+  }
+} else if (
+  (parent1 === "green" && parent2 === "blue") ||
+  (parent1 === "blue" && parent2 === "green")
+) {
+  console.log(
+    "the chances of your child having blue eyes is 50%, brown is 0% and green is 50%"
+  );
+  childEyeRandom = getRandomInt(101);
+  childEyeColor = childEyeRandom >= 50 ? "blue" : "green";
+} else if (
+  (parent1 === "green" && parent2 === "brown") ||
+  (parent1 === "brown" && parent2 === "green")
+) {
+  console.log(
+    "the chances of your child having blue eyes is 12.5%, brown is 50% and green is 37.5%"
+  );
+  childEyeRandom = getRandomInt(101);
+  if (childEyeRandom <= 13) {
+    childEyeColor = "blue";
+  } else if (childEyeRandom <= 64) {
+    childEyeColor = "brown";
+  } else {
+    childEyeColor = "green";
+  }
+} else if (parent1 === "blue" && parent2 === "blue") {
+  console.log(
+    "the chances of your child having blue eyes is 99%, brown is 0% and green is 1%"
+  );
+  childEyeRandom = getRandomInt(101);
+  childEyeColor = childEyeColor > 1 ? "blue" : "green";
+} else if (parent1 === "brown" && parent2 === "brown") {
+  console.log(
+    "the chances of your child having blue eyes is 6.25%, brown is 75% and green is 18.75%"
+  );
+  childEyeRandom = getRandomInt(101);
+  if (childEyeRandom <= 7) {
+    childEyeColor = "blue";
+  } else if (childEyeRandom <= 82) {
+    childEyeColor = "brown";
+  } else {
+    childEyeColor = "green";
+  }
+} else console.log("this is not a valid colour");
 
 switch (childEyeColor) {
   case "brown":
@@ -147,3 +115,91 @@ switch (childEyeColor) {
   default:
     console.log("opps a mistake has been made");
 }
+
+// switch ((parent1, parent2)) { - Would love to go through this with a coach
+// case (parent1 === "blue", parent2 === "Blue"):
+// case ("Blue", parent2 === "blue"):
+// case ("blue", "blue"):
+// case ("Blue", "Blue"):
+//   console.log(
+//     "the chances of your child having blue eyes is 99%, brown is 0% and green is 1%"
+//   );
+//   childEyeRandom = getRandomInt(101);
+//   childEyeColor = childEyeColor > 1 ? "blue" : "green";
+//   break;
+// case ("blue", "Green"):
+// case ("Blue", "green"):
+// case ("green", "blue"):
+// case ("Green", "Blue"):
+//   console.log(
+//     "the chances of your child having blue eyes is 50%, brown is 0% and green is 50%"
+//   );
+//   childEyeRandom = getRandomInt(101);
+//   childEyeColor = childEyeRandom >= 50 ? "blue" : "green";
+//   break;
+// case ("blue", "Brown"):
+// case ("Blue", "brown"):
+// case ("brown", "blue"):
+// case ("Brown", "Blue"):
+//   console.log(
+//     "the chances of your child having blue eyes is 50%, brown is 50% and green is 0%"
+//   );
+//   childEyeRandom = getRandomInt(101);
+//   childEyeColor = childEyeRandom >= 50 ? "blue" : "brown";
+//   break;
+// case ("green", "brown"):
+// case ("Green", "Brown"):
+// case ("brown", "Green"):
+// case ("Brown", "green"):
+//   console.log(
+//     "the chances of your child having blue eyes is 12.5%, brown is 50% and green is 37.5%"
+//   );
+//   childEyeRandom = getRandomInt(101);
+//   if (childEyeRandom <= 13) {
+//     childEyeColor = "blue";
+//   } else if (childEyeRandom <= 64) {
+//     childEyeColor = "brown";
+//   } else {
+//     childEyeColor = "green";
+//   }
+//   break;
+// case ("green", "Green"):
+// case ("Green", "green"):
+// case ("Green", "Green"):
+// case ("green", "green"):
+//   console.log(
+//     "the chances of your child having blue eyes is 25%, brown is <1% and green is 75%"
+//   );
+//   childEyeRandom = getRandomInt(101);
+//   if (childEyeRandom < 1) {
+//     childEyeColor = "brown";
+//   } else if (childEyeRandom <= 25) {
+//     childEyeColor = "blue";
+//   } else {
+//     childEyeColor = "green";
+//   }
+//   break;
+// case ("Brown", "brown"):
+// case ("brown", "Brown"):
+// case ("Brown", "Brown"):
+// case ("brown", "brown"):
+//   console.log(
+//     "the chances of your child having blue eyes is 6.25%, brown is 75% and green is 18.75%"
+//   );
+//   childEyeRandom = getRandomInt(101);
+//   if (childEyeRandom <= 7) {
+//     childEyeColor = "blue";
+//   } else if (childEyeRandom <= 82) {
+//     childEyeColor = "brown";
+//   } else {
+//     childEyeColor = "green";
+//   }
+//   break;
+// default:
+//   console.log("this is not a valid colour");
+// }
+
+// Given the eye colour of each parent, it should console log the probability of their child having different eye colours, for example: Your eye colours are brown and blue, the chances of your child having blue eyes is --%, brown is --% and green is --%
+// Use the following image as a reference
+// Bonus:
+// Store the value of the child’s eye colour and write a switch statement - depending on the child’s eye colour consol log if it's your favourite eye colour, your least favourite eye colour or the mediocre colour
