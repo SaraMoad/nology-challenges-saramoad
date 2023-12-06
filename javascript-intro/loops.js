@@ -13,7 +13,7 @@ const sum = (num) => {
   for (let i = 0; i <= num; i++) {
     sumOfNumbers += i;
   }
-  return console.log(sumOfNumbers);
+  // return console.log(sumOfNumbers);
 };
 
 // Try writing the function again with the same inputs and outputs **Without**
@@ -25,7 +25,36 @@ const secondSum = (n) => {
 
 sum(10);
 // O(n);
-console.log(secondSum(10));
+// console.log(secondSum(10));
 // O(1);
 
 // ### Bonus:
+
+// Part two of challenges:
+// Recap exercises (loops and methods)
+
+const pets = ["pixie", "claude", "sebastian", "bug"];
+// -> 1. ['claude', 'sebastian', 'bug', 'pixie']
+let firstItem = pets.shift();
+console.log(pets.push(firstItem), pets);
+// -> 2. ['pixie', 'bug', 'sebastian', 'claude']
+let reveresedPets = pets.reverse();
+console.log(reveresedPets);
+// -> 3. ['bug', 'sebastian', 'pixie']
+pets.pop();
+pets.shift();
+console.log(pets.push(firstItem));
+// -> 4. ['Bug', 'Sebastian', 'Pixie]
+
+for (let i = 0; i < pets.length; i++) {
+  console.log(pets);
+  pets[i] = pets[i][0].toUpperCase() + pets[i].slice(1);
+}
+
+console.log(pets);
+// -> 5. ['Bug', 'Seb', 'Pix']
+let shortenedPets = [];
+for (let i = 0; i < pets.length; i++) {
+  pets[i] = pets[i].slice(0, 3);
+}
+console.log(pets);
