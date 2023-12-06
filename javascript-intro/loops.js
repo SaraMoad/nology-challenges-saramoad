@@ -16,6 +16,9 @@ const sum = (num) => {
   return console.log(sumOfNumbers);
 };
 
+// Try writing the function again with the same inputs and outputs **Without**
+// using a loop. (You may need to google some formulas!)
+
 const secondSum = (n) => {
   return (n * (n + 1)) / 2;
 };
@@ -26,6 +29,3 @@ console.log(secondSum(10));
 // O(1);
 
 // ### Bonus:
-
-// Try writing the function again with the same inputs and outputs **Without**
-// using a loop. (You may need to google some formulas!)
