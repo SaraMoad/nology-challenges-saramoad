@@ -175,7 +175,6 @@ export const generateHighscores = (playersArr, scoresArr) => {
   const players = [...playersArr];
   const scores = [...scoresArr];
   let results = [];
-  let finalScore = [];
   if (
     players.length === 0 ||
     scores.length === 0 ||

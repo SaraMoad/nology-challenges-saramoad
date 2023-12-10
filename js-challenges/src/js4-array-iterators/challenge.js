@@ -37,7 +37,7 @@ export const removeFalseValues = (booleanArr) => {
 
 export const createPercentageList = (numbersArr) => {
   const newNumbersArr = [...numbersArr];
-  let percentageList = newNumbersArr.map((num) => String(num * 100 + "%"));
+  let percentageList = newNumbersArr.map((num) => num * 100 + "%");
   return percentageList;
 };
 
@@ -52,9 +52,7 @@ export const createPercentageList = (numbersArr) => {
 
 export const createListOfPoessessions = (possessionsArr, name) => {
   const newPossesionsArr = [...possessionsArr];
-  const listOfPosessions = newPossesionsArr.map((item) =>
-    String(name + " " + item)
-  );
+  const listOfPosessions = newPossesionsArr.map((item) => name + " " + item);
   return listOfPosessions;
 };
 
@@ -95,9 +93,9 @@ export const convertStringToNumbersArray = (numberString) => {
 
 export const createOddEvenArray = (numberString) => {
   let numberSplit = numberString.split("+");
-  const numbersArray = numberSplit.map((number) => {
-    return Number(number) % 2 === 0 ? "even" : "odd";
-  });
+  const numbersArray = numberSplit.map((number) =>
+    number % 2 === 0 ? "even" : "odd"
+  );
   return numbersArray;
 };
 
@@ -159,7 +157,7 @@ export const formatStringArray = (stringArr) => {
  */
 
 export const formatString = (string) => {
-  let cleanStr = string.toLowerCase().match(/([A-Za-z])/g);
+  let cleanStr = string.toLowerCase().match(/([a-z])/g);
   if (!cleanStr) {
     return (cleanStr = []);
   }
@@ -196,11 +194,11 @@ export const fizzBuzz = (mixedArray) => {
   let newMixedArray = [...mixedArray];
   let numbersArray = newMixedArray.filter((item) => Number(item) > 0);
   let fizzBuzziterator = numbersArray.map((item) => {
-    if (Number(item) % 3 === 0) {
-      if (Number(item) % 5 === 0) {
+    if (item % 3 === 0) {
+      if (item % 5 === 0) {
         return "FizzBuzz";
       } else return "Fizz";
-    } else if (Number(item) % 5 === 0) {
+    } else if (item % 5 === 0) {
       return "Buzz";
     } else return String(item);
   });
