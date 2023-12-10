@@ -156,7 +156,7 @@ export const getHasUppercaseLetters = () => {
 const pascalCaseVariableName = "IWantToBeSnakeCase";
 
 export const convertPascalCaseToSnakeCase = () => {
-  let upperCaseLetters = pascalCaseVariableName.match(/([A-Z])/g);
+  let upperCaseLetters = pascalCaseVariableName.match([A - Z / a - z] / g);
   let array = [];
 
   for (let i = 0; i < upperCaseLetters.length; i++) {
