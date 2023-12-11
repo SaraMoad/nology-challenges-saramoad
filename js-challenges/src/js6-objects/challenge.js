@@ -21,7 +21,7 @@
  * @return {number} The price of the piece of furniture
  */
 export const getFurniturePrice = (furniture) => {
-  /* Write code here */
+  return furniture.price;
 };
 
 /**
@@ -32,7 +32,8 @@ export const getFurniturePrice = (furniture) => {
  * @returns {{name: string, price: number, location: string}} furniture - A furniture object from the catalogue
  */
 export const setFurnitureStoreLocation = (furniture, location) => {
-  /* Write code here */
+  furniture["location"] = location;
+  return furniture;
 };
 
 /**
@@ -45,8 +46,19 @@ export const setFurnitureStoreLocation = (furniture, location) => {
  * @param {boolean} canTravelSolarSystems The ability for the space ship to travel to different solar systems
  * @returns {{name: string, noOfSeats: number, engineType: string, canTravelSolarSystems: boolean}} spaceship - The space ship object
  */
-export const makeSpaceship = (name, noOfSeats, engineType, canTravelSolarSystems) => {
-  /* Write code here */
+export const makeSpaceship = (
+  name,
+  noOfSeats,
+  engineType,
+  canTravelSolarSystems
+) => {
+  const spaceShip = {
+    name: name,
+    noOfSeats: noOfSeats,
+    engineType: engineType,
+    canTravelSolarSystems: canTravelSolarSystems,
+  };
+  return spaceShip;
 };
 
 /* Intermediate Challenges */
@@ -59,7 +71,10 @@ export const makeSpaceship = (name, noOfSeats, engineType, canTravelSolarSystems
  * @returns {{name: string, username: string}} User - The user object with the same username or a new one
  */
 export const setUserName = (user, username) => {
-  /* Write code here */
+  if (user.username == undefined) {
+    user.username = username;
+  }
+  return user;
 };
 
 /**
@@ -70,7 +85,10 @@ export const setUserName = (user, username) => {
  * @returns {{fullName: string, firstName: string, lastName: string}} A customer object from the database with the name separated into first and last
  */
 export const splitFullNameToFirstAndLast = (customer) => {
-  /* Write code here */
+  let splitNames = customer.fullName.split(" ");
+  customer["lastName"] = splitNames[1];
+  customer["firstName"] = splitNames[0];
+  return customer;
 };
 
 /**
@@ -83,7 +101,7 @@ export const splitFullNameToFirstAndLast = (customer) => {
  * @returns {any} value - The value you have accessed on the object
  */
 export const accessGivenKey = (object, key) => {
-  /* Write code here */
+  return object[key];
 };
 
 /* Advanced Challenges */
@@ -96,7 +114,7 @@ export const accessGivenKey = (object, key) => {
  * @returns {string} An address string for a shipping label
  */
 export const getUserAddress = (user) => {
-  /* Write code here */
+  return `${user.address.line1} ${user.address.line2} ${user.address.city} ${user.address.postcode}`;
 };
 
 /**
@@ -108,7 +126,12 @@ export const getUserAddress = (user) => {
  * @return {{id: number, name: string, allergies: string[], safeAllergens: string[]}} customer
  */
 export const setSafeAllergens = (customer, allergenList) => {
-  /* Write code here */
+  let safeAllergies = [];
+  safeAllergies = allergenList.filter(
+    (allergen) => !customer.allergies.includes(allergen)
+  );
+  customer["safeAllergens"] = safeAllergies;
+  return customer;
 };
 
 /* Expert Challenge */
@@ -122,5 +145,9 @@ export const setSafeAllergens = (customer, allergenList) => {
  * @returns {{id: number, location: string, sku: string, name: string, price: number, isAvailable: boolean}}
  */
 export const mergeFurniture = (furnitureLocationData, furnitureProductData) => {
-  /* Write code here */
+  const copyOfFurniture = {
+    ...furnitureLocationData,
+    ...furnitureProductData,
+  };
+  return copyOfFurniture;
 };
