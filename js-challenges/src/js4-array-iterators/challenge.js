@@ -22,9 +22,7 @@
  */
 
 export const removeFalseValues = (booleanArr) => {
-  const booleanArr2 = [...booleanArr];
-  const trueBoolean = booleanArr2.filter((bool) => bool === true);
-  return trueBoolean;
+  return booleanArr.filter((bool) => bool === true);
 };
 
 /**
@@ -36,9 +34,7 @@ export const removeFalseValues = (booleanArr) => {
  */
 
 export const createPercentageList = (numbersArr) => {
-  const newNumbersArr = [...numbersArr];
-  let percentageList = newNumbersArr.map((num) => num * 100 + "%");
-  return percentageList;
+  return numbersArr.map((num) => num * 100 + "%");
 };
 
 /**
@@ -51,9 +47,7 @@ export const createPercentageList = (numbersArr) => {
  */
 
 export const createListOfPoessessions = (possessionsArr, name) => {
-  const newPossesionsArr = [...possessionsArr];
-  const listOfPosessions = newPossesionsArr.map((item) => name + " " + item);
-  return listOfPosessions;
+  return possessionsArr.map((item) => name + " " + item);
 };
 
 /**
@@ -79,8 +73,7 @@ export const createListOfPoessessions = (possessionsArr, name) => {
 
 export const convertStringToNumbersArray = (numberString) => {
   const stringArray = numberString.split("+");
-  const numbersArray = stringArray.map((number) => Number(number));
-  return numbersArray;
+  return stringArray.map((number) => Number(number));
 };
 
 /**
@@ -93,10 +86,7 @@ export const convertStringToNumbersArray = (numberString) => {
 
 export const createOddEvenArray = (numberString) => {
   let numberSplit = numberString.split("+");
-  const numbersArray = numberSplit.map((number) =>
-    number % 2 === 0 ? "even" : "odd"
-  );
-  return numbersArray;
+  return numberSplit.map((number) => (number % 2 === 0 ? "even" : "odd"));
 };
 
 /**
@@ -109,9 +99,7 @@ export const createOddEvenArray = (numberString) => {
  */
 
 export const filterBooksBySearch = (booksArr, searchTerm) => {
-  let newBooksArr = [...booksArr];
-  let filteredList = newBooksArr.filter((book) => book.includes(searchTerm));
-  return filteredList;
+  return booksArr.filter((book) => book.includes(searchTerm));
 };
 
 /**
@@ -161,10 +149,9 @@ export const formatString = (string) => {
   if (!cleanStr) {
     return (cleanStr = []);
   }
-  let formattedStr = cleanStr.map((c, i) => {
+  return cleanStr.map((c, i) => {
     return i % 2 === 0 ? c.toUpperCase() : c;
   });
-  return formattedStr;
 };
 
 /**
@@ -191,16 +178,15 @@ export const formatString = (string) => {
  */
 
 export const fizzBuzz = (mixedArray) => {
-  let newMixedArray = [...mixedArray];
-  let numbersArray = newMixedArray.filter((item) => Number(item) > 0);
-  let fizzBuzziterator = numbersArray.map((item) => {
-    if (item % 3 === 0) {
-      if (item % 5 === 0) {
-        return "FizzBuzz";
-      } else return "Fizz";
-    } else if (item % 5 === 0) {
-      return "Buzz";
-    } else return String(item);
-  });
-  return fizzBuzziterator;
+  return mixedArray
+    .filter((item) => Number(item) > 0)
+    .map((item) => {
+      if (item % 3 === 0) {
+        if (item % 5 === 0) {
+          return "FizzBuzz";
+        } else return "Fizz";
+      } else if (item % 5 === 0) {
+        return "Buzz";
+      } else return String(item);
+    });
 };

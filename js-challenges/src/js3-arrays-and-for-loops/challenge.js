@@ -80,8 +80,8 @@ export const totalRange = (rangeMax) => {
 export const moveFirstAndLastItems = (itemsArr) => {
   let movedItems = [];
   movedItems.push(itemsArr[itemsArr.length - 1]);
-  for (let i = 1; i <= itemsArr.length - 1; i++) {
-    movedItems.push(itemsArr[i - 1]);
+  for (let i = 0; i <= itemsArr.length - 1; i++) {
+    movedItems.push(itemsArr[i]);
   }
   return movedItems;
 };
@@ -219,32 +219,26 @@ export const encryptString = (toEncrypt) => {
   let list1 = [];
   let list2 = [];
   let list3 = [];
-  let encryptedresult = "";
+
+  // e n c r y p t e d
+  // 0 1 2 3 4 5 6 7 8
 
   if (toEncrypt.length <= 3) {
     return toEncrypt;
-  } else {
-    for (let i = 0; i < toEncrypt.length; i++) {
-      if (i === 0) {
-        list1.push(toEncrypt[i]);
-      } else if (
-        list1.length === list2.length &&
-        list1.length === list3.length
-      ) {
-        list1.push(toEncrypt[i]);
-      } else if (list1.length > list2.length && list1.length > list3.length) {
-        list2.push(toEncrypt[i]);
-      } else {
-        list3.push(toEncrypt[i]);
-      }
-    }
-    let encryptedlist1 = list1.join("");
-    let encryptedlist2 = list2.join("");
-    let encryptedlist3 = list3.join("");
-    return encryptedresult.concat(
-      encryptedlist1,
-      encryptedlist2,
-      encryptedlist3
-    );
   }
+  // lets list = [[],[],[]];
+  // for ()
+  for (let i = 0; i < toEncrypt.length; i++) {
+    if (i % 3 === 0) {
+      list1.push(toEncrypt[i]);
+    } else if (i % 3 === 1) {
+      list2.push(toEncrypt[i]);
+    } else {
+      list3.push(toEncrypt[i]);
+    }
+  }
+  let encryptedlist1 = list1.join("");
+  let encryptedlist2 = list2.join("");
+  let encryptedlist3 = list3.join("");
+  return encryptedlist1 + encryptedlist2 + encryptedlist3;
 };
