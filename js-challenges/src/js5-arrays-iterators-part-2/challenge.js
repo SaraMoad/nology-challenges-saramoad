@@ -22,7 +22,9 @@
  */
 
 export const totalScoresArr = (scoresArr) => {
-  return;
+  return scoresArr.reduce((acc, currentValue) => {
+    return acc + currentValue;
+  }, 0);
 };
 
 /**
@@ -35,7 +37,7 @@ export const totalScoresArr = (scoresArr) => {
  */
 
 export const reverseString = (toReverse) => {
-  return;
+  return toReverse.split("").reverse().join("");
 };
 
 /**
@@ -48,7 +50,8 @@ export const reverseString = (toReverse) => {
  */
 
 export const sortCharactersAlphabetically = (charcterArr) => {
-  return;
+  let newCharArr = [...charcterArr];
+  return newCharArr.map((char) => char.toLowerCase()).sort();
 };
 
 /**
@@ -63,7 +66,7 @@ export const sortCharactersAlphabetically = (charcterArr) => {
  */
 
 export const sortNumbersHighToLow = (numberArr) => {
-  return;
+  return numberArr.sort((a, b) => b - a);
 };
 
 /**
@@ -94,7 +97,14 @@ export const checkItemInstock = (toCheck) => {
     "blueberry",
     "melon",
   ];
-  return;
+
+  let findIndex = stockList.findIndex((item) => item === toCheck);
+  return findIndex === -1
+    ? `Sorry ${toCheck} is not instock.`
+    : `${toCheck} is instock, it is on aisle ${findIndex}.`;
+  //   return `Sorry ${toCheck} is not instock.`
+  // } else {
+  //   return `${toCheck} is instock, it is on aisle ${findIndex}.`;
 };
 
 /**
@@ -107,9 +117,8 @@ export const checkItemInstock = (toCheck) => {
  * @return {boolean} false
  */
 
-export const checkPrimaryColours = (coloursArr) => {
-  return;
-};
+export const checkPrimaryColours = (coloursArr) =>
+  coloursArr.every((colour) => colour.match("red|yellow|blue"));
 
 /**
  * Advanced Challenges
@@ -125,7 +134,8 @@ export const checkPrimaryColours = (coloursArr) => {
  */
 
 export const checkStringPalindrome = (stringOne) => {
-  return;
+  const reversedString = String(stringOne).split("").reverse().join("");
+  return String(stringOne) === reversedString;
 };
 
 /**
@@ -138,9 +148,8 @@ export const checkStringPalindrome = (stringOne) => {
  * @return {number[]} [20, 7, 3]
  */
 
-export const totalNestedScoresArr = (scoresArr) => {
-  return;
-};
+export const totalNestedScoresArr = (scoresArr) =>
+  scoresArr.map((arr) => arr.reduce((acc, curr) => acc + curr));
 
 /**
  * Expert Challenge
@@ -172,5 +181,18 @@ export const totalNestedScoresArr = (scoresArr) => {
  */
 
 export const encryptString = (toEncrypt) => {
-  return;
+  if (toEncrypt.length <= 3) {
+    return toEncrypt;
+  }
+  return toEncrypt
+    .split("")
+    .reduce(
+      (acc, curr, index) => {
+        acc[index % 3].push(curr);
+        return acc;
+      },
+      [[], [], []]
+    )
+    .flat()
+    .join("");
 };
