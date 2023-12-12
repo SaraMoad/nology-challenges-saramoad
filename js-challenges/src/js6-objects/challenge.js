@@ -126,11 +126,9 @@ export const getUserAddress = (user) => {
  * @return {{id: number, name: string, allergies: string[], safeAllergens: string[]}} customer
  */
 export const setSafeAllergens = (customer, allergenList) => {
-  let safeAllergies = [];
-  safeAllergies = allergenList.filter(
+  customer["safeAllergens"] = allergenList.filter(
     (allergen) => !customer.allergies.includes(allergen)
   );
-  customer["safeAllergens"] = safeAllergies;
   return customer;
 };
 

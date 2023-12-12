@@ -50,8 +50,7 @@ export const reverseString = (toReverse) => {
  */
 
 export const sortCharactersAlphabetically = (charcterArr) => {
-  let newCharArr = [...charcterArr];
-  return newCharArr.map((char) => char.toLowerCase()).sort();
+  return charcterArr.map((char) => char.toLowerCase()).sort();
 };
 
 /**
@@ -102,9 +101,6 @@ export const checkItemInstock = (toCheck) => {
   return findIndex === -1
     ? `Sorry ${toCheck} is not instock.`
     : `${toCheck} is instock, it is on aisle ${findIndex}.`;
-  //   return `Sorry ${toCheck} is not instock.`
-  // } else {
-  //   return `${toCheck} is instock, it is on aisle ${findIndex}.`;
 };
 
 /**
@@ -137,7 +133,7 @@ export const checkStringPalindrome = (stringOne) => {
   const reversedString = String(stringOne).split("").reverse().join("");
   return String(stringOne) === reversedString;
 };
-
+// using a for loop for this solution for performance and to exit early is the best way. makes it easier to check quicker if its false.
 /**
  * A function that totals a nested array of scores arrays.
  * It only needs to total each nested array.
@@ -150,6 +146,7 @@ export const checkStringPalindrome = (stringOne) => {
 
 export const totalNestedScoresArr = (scoresArr) =>
   scoresArr.map((arr) => arr.reduce((acc, curr) => acc + curr));
+//can use previous function.
 
 /**
  * Expert Challenge
@@ -165,7 +162,7 @@ export const totalNestedScoresArr = (scoresArr) =>
  * The first three letters will go into their own list.
  * The next three letters will follow this pattern.
  * Joining the first three letters in each of their list.
- * The rest of the letter's will follow this pattern.
+ * The rest of the letter's will follow th is pattern.
  * Each list will be joined together and returned as an encrypted message.
  *
  * The word "encrypted" would be broken into:
