@@ -51,14 +51,16 @@ export class Alert {
    * Create an alert.
    * @param {string} message - "Are sure you want to proceed?"
    */
-  constructor() {}
+  constructor(message) {
+    this.message = message;
+  }
 
   /**
    * Returns a string with "!!!! " + " !!!!" added to the start and end of the message key.
    * @return {string} "!!!! Are sure you want to proceed? !!!!"
    */
   printMessage() {
-    return;
+    return `!!!! ${this.message} !!!!`;
   }
 }
 
@@ -86,17 +88,23 @@ export class Loader {
    * Create a loader.
    * @param {{innerHTML:string}} htmlRef - {innerHTML:""}
    */
-  constructor() {}
+  constructor(htmlRef) {
+    this.htmlRef = htmlRef;
+  }
 
   /**
    * Updates the htmlRef.innerHTML to display the loader's html.
    */
-  displayLoader() {}
+  displayLoader() {
+    this.htmlRef.innerHTML = `<div class="loader"></div>`;
 
-  /**
-   * Updates the htmlRef.innerHTML to remove the loader's html.
-   */
-  removeLoader() {}
+    /**
+     * Updates the htmlRef.innerHTML to remove the loader's html.
+     */
+  }
+  removeLoader() {
+    this.htmlRef.innerHTML = "";
+  }
 }
 
 /**
@@ -128,7 +136,9 @@ export class Counter {
    * Create an counter.
    * @param {number} count - 50
    */
-  constructor() {}
+  constructor(count = 0) {
+    this.count = count;
+  }
 
   /**
    * A method that increments count by 1.
@@ -136,6 +146,9 @@ export class Counter {
    */
 
   // WRITE INCREMENT FUNCTION HERE
+  increment() {
+    return Number((this.count += 1));
+  }
 
   /**
    * A method that decrements count by 1 but will not go below 0.
@@ -143,6 +156,9 @@ export class Counter {
    */
 
   // WRITE DECREMENT FUNCTION HERE
+  decrement() {
+    return !this.count ? Number((this.count = 0)) : Number((this.count -= 1));
+  }
 }
 
 /**
@@ -170,14 +186,21 @@ export class Engine {
   /**
    * Create an engine.
    */
-  constructor() {}
+  constructor() {
+    this.engineIsRunning = false;
+  }
 
   /**
    * Updates engineIsRunning to true and returns a conditonal string based if the engine is already running.
    * @return {string} "Engine has started running" or "Engine is already running"
    */
   startEngine() {
-    return;
+    if (this.engineIsRunning) {
+      return "Engine is already running";
+    } else {
+      this.engineIsRunning = true;
+      return "Engine has started running";
+    }
   }
 
   /**
@@ -185,7 +208,12 @@ export class Engine {
    * @return {string} "Engine has stopped running" or "Engine has already stopped running"
    */
   stopEngine() {
-    return;
+    if (!this.engineIsRunning) {
+      return "Engine has already stopped running";
+    } else {
+      this.engineIsRunning = false;
+      return "Engine has stopped running";
+    }
   }
 }
 
@@ -213,10 +241,6 @@ export class Engine {
  * MODAL-TITLE will be the title key from the class.
  * MODAL-MESSAGE will be the mesage key from the class.
  *
- * The second will need to be called displayModal().
- * This method when called will go into the htmlRef, then into the classList and use the toggle method.
- * The toggle method will need to be passed a string of "hide" to correctly toggle the class.
- * This is mocking the adding and removing of a CSS class to a HTML element.
  */
 
 /** Class representing a modal. */
@@ -227,19 +251,32 @@ export class Modal {
    * @param {string} title - "Error"
    * @param {string} message - "We are currently unable to provide this service"
    */
-  constructor() {}
+  constructor(htmlRef, title, message) {
+    this.htmlRef = htmlRef;
+    this.title = title;
+    this.message = message;
+  }
 
   /**
    * A method that renders the html for a modal.
    */
 
   // WRITE RENDER HTML METHOD HERE
-
+  renderHtml() {
+    this.htmlRef.innerHTML = `\n    <div class=\"modal\">\n      <h2 class=\"modal--title\">${this.title}</h2>\n      <p class=\"modal--message\">${this.message}</p>\n    </div>\n    `;
+  }
   /**
    * A method that toggles a CSS class to either show or hide the modal.
+   * The second will need to be called displayModal().
+   * This method when called will go into the htmlRef, then into the classList and use the toggle method.
+   * The toggle method will need to be passed a string of "hide" to correctly toggle the class.
+   * This is mocking the adding and removing of a CSS class to a HTML element.
    */
 
   // WRITE DISPLAY MODAL METHOD HERE
+  displayModal() {
+    this.htmlRef.classList.toggle("hide");
+  }
 }
 
 /**
@@ -307,12 +344,17 @@ export class BookShelf {
    */
 
   // WRITE LATEST BOOK GETTER HERE
+  get latestBook() {
+    return this._booksOnShelf[this._booksOnShelf.length - 1];
+  }
 
   /**
    * A setter that adds a new book to the list of books.
    * @param {string} "Eloquent JavaScript"
    */
-
+  set addBookToShelf(book) {
+    return this._booksOnShelf.push(book);
+  }
   // WRITE ADD BOOK TO SHELF SETTER HERE
 }
 
@@ -336,15 +378,7 @@ export class BookShelf {
  *
  * You will need to write two methods.
  *
- * The first needs to be called deposit().
- * It will need to accempt a parameter which is the amount to deposit.
- * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
- * You will have to handle this in the function.
- * You will need to handle negative numbers.
  *
- * If it is a positive number it needs to be added to the balance. The updated balance is then returned.
- * If it is a positive number as a string it needs to be turned into a number and added to the balance. The updated balance is then returned.
- * If it is a negative number or something else the function need to return this "Invalid input, unable to deposit".
  *
  * The second needs to be called withdraw().
  * It will need to accempt a parameter which is the amount to withdraw.
@@ -366,7 +400,11 @@ export class BankAccount {
    * @param {string} email
    * @param {number} balance
    */
-  constructor() {}
+  constructor(name, email, balance = 0) {
+    this.name = name;
+    this.email = email;
+    this._balance = balance;
+  }
 
   /**
    * A getter that returns the current balance.
@@ -374,6 +412,9 @@ export class BankAccount {
    */
 
   // WRITE BALANCE GETTER HERE
+  get balance() {
+    return this._balance;
+  }
 
   /**
    * A method that deposits to the balance.
@@ -382,9 +423,23 @@ export class BankAccount {
    * If it is correct it adds the input to the balance and returns the updated balance.
    * @param {(number|string)} toDeposit 20 or "Bad Input"
    * @return {(number|string)} 40 or "Invalid input, unable to deposit"
+   * The first needs to be called deposit().
+   * It will need to accempt a parameter which is the amount to deposit.
+   * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
+   * You will have to handle this in the function.
+   * You will need to handle negative numbers.
+   * If it is a positive number it needs to be added to the balance. The updated balance is then returned.
+   * If it is a positive number as a string it needs to be turned into a number and added to the balance. The updated balance is then returned.
+   * If it is a negative number or something else the function need to return this "Invalid input, unable to deposit".
    */
-
   // WRITE DEPOSIT METHOD HERE
+  deposit(toDeposit) {
+    if (!Number(toDeposit) || Number(toDeposit) < 0) {
+      return "Invalid input, unable to deposit";
+    } else {
+      return (this._balance += Number(toDeposit));
+    }
+  }
 
   /**
    * A method that withdraws from the balance.
@@ -397,4 +452,15 @@ export class BankAccount {
    */
 
   // WRITE WITH DRAW METHOD HERE
+
+  withdraw(toWithdraw) {
+    if (String(toWithdraw).includes("-") || !Number(toWithdraw)) {
+      return "Invalid input, unable to withdraw";
+    } else if (Number(toWithdraw) > this._balance) {
+      return "Insufficient funds, unable to withdraw";
+    } else {
+      this._balance -= Number(toWithdraw);
+      return this._balance;
+    }
+  }
 }
