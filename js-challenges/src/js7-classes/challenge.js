@@ -27,7 +27,10 @@ export class Coordinate {
    * @param {number} xCoord - 22.
    * @param {number} yCoord - 20.
    */
-  constructor(xCoord, yCoord) {}
+  constructor(xCoord, yCoord) {
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
+  }
 }
 
 /**

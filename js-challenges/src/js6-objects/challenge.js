@@ -77,6 +77,7 @@ export const setUserName = (user, username) => {
   return user;
 };
 
+// use an ternary operator if check truthy or falsey rather than undefined. 
 /**
  * A function which takes a customer object from the database and returns the same object where the name has been
  * split into first and last name and reattached to the object
@@ -116,6 +117,8 @@ export const accessGivenKey = (object, key) => {
 export const getUserAddress = (user) => {
   return `${user.address.line1} ${user.address.line2} ${user.address.city} ${user.address.postcode}`;
 };
+//could create a variable to lower the amount of access needed making it just variable.property. 
+// Object.values(user.address).toString().replaceAll(',', '')
 
 /**
  * A function that given a customer for the restaurant with a list of known allergies and a list of allergens in an
