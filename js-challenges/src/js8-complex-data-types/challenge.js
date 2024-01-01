@@ -18,6 +18,7 @@
  */
 export const getEmployeeQuotes = (employeeArr) => {
   // Write code here
+  return employeeArr.map((employee) => employee.quote);
 };
 
 /**
@@ -27,7 +28,7 @@ export const getEmployeeQuotes = (employeeArr) => {
  * @returns {{name: string, quote: string, yearsEmployed: number, isManagement: boolean}[]} An array containing only managers
  */
 export const getTheManagers = (employeeArr) => {
-  // Write code here
+  return employeeArr.filter((employee) => employee.isManagement);
 };
 
 /**
@@ -37,7 +38,7 @@ export const getTheManagers = (employeeArr) => {
  * @returns {number} The number of the keys on the object
  */
 export const getNumberOfKeys = (object) => {
-  // Write code here
+  return Object.keys(object).length;
 };
 
 /* Intermediate Challenges */
@@ -50,7 +51,12 @@ export const getNumberOfKeys = (object) => {
  * @returns {{name: string, price: number, hasFreeShipping: boolean, quantity: number}} The most expensive item in the shopping basket
  */
 export const findMostExpensiveItem = (shoppingBasketArr) => {
-  // Write code here
+  return shoppingBasketArr.reduce((acc, item) => {
+    if (acc.price < item.price) {
+      acc = item;
+    }
+    return acc;
+  });
 };
 
 /**
@@ -69,7 +75,10 @@ export const findMostExpensiveItem = (shoppingBasketArr) => {
  * @returns {{name: string, price: number, hasFreeShipping: boolean, quantity: number, totalPrice: number}[]} A new array where each object has had a total price added to it
  */
 export const settotalPrice = (shoppingBasketArr) => {
-  // Write code here
+  return shoppingBasketArr.map((item) => ({
+    ...item,
+    totalPrice: item.price * item.quantity,
+  }));
 };
 
 /**
@@ -79,7 +88,11 @@ export const settotalPrice = (shoppingBasketArr) => {
  * @returns {number} The total cost of the order
  */
 export const totalShoppingBasket = (shoppingBasketArr) => {
-  // Write code here
+  const totalPrice = shoppingBasketArr.reduce((acc, item) => {
+    acc += item.totalPrice;
+    return acc;
+  }, 0);
+  return totalPrice;
 };
 
 /* Advanced Challenges */
@@ -92,7 +105,11 @@ export const totalShoppingBasket = (shoppingBasketArr) => {
  * @returns {{id: number, name: string, ingredients: string[], country: string}[]} An array of cleaned meal objects
  */
 export const getImportantKeys = (mealsArr) => {
-  // Write code here
+  let tmp = [...mealsArr];
+  return tmp.map((meals) => {
+    let { userCreated, timeStamp, ...mealsRest } = meals;
+    return mealsRest;
+  });
 };
 
 /**
@@ -106,7 +123,22 @@ export const getImportantKeys = (mealsArr) => {
  * @returns {{id: number, name: string, ingredients: string[], country: string, isVegetarian: boolean, timeToCook: number}[]}
  */
 export const setImportantKeys = (mealsArr) => {
-  // Write code here
+  let tmp = [...mealsArr];
+  let arr = tmp.map((meal) => {
+    if (!Object.keys(meal).includes("isVegetarian")) {
+      return {
+        ...meal,
+        isVegetarian: false,
+      };
+    }
+    if (!Object.keys(meal).includes("timeToCook")) {
+      return {
+        ...meal,
+        timeToCook: 15,
+      };
+    } else return { ...meal };
+  });
+  return arr;
 };
 
 /* Expert Challenge */
@@ -138,5 +170,31 @@ export const setImportantKeys = (mealsArr) => {
  * }[]} A Cleaned array of cocktail data
  */
 export const cleanCocktailResponseData = (cocktailData) => {
-  // Write code here
+  let tmp = [];
+  return cocktailData.map((items, index) => {
+    let ingredientObject = {
+      ingrediant1: items.strIngredient1,
+      ingrediant2: items.strIngredient2,
+      ingrediant3: items.strIngredient3,
+      ingrediant4: items.strIngredient4,
+      ingrediant5: items.strIngredient5,
+      ingrediant6: items.strIngredient6,
+    };
+
+    for (const [key, value] of Object.entries(ingredientObject)) {
+      if (typeof value === "string") {
+        tmp.push(value);
+      }
+    }
+    const cocktail = {
+      id: items.idDrink,
+      drink: items.strDrink,
+      category: items.strCategory,
+      alcoholic: items.strAlcoholic,
+      instructions: items.strInstructions,
+      ingredients: tmp,
+    };
+    tmp = [];
+    return cocktail;
+  });
 };
