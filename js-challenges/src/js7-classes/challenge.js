@@ -263,8 +263,14 @@ export class Modal {
 
   // WRITE RENDER HTML METHOD HERE
   renderHtml() {
-    this.htmlRef.innerHTML = `\n    <div class=\"modal\">\n      <h2 class=\"modal--title\">${this.title}</h2>\n      <p class=\"modal--message\">${this.message}</p>\n    </div>\n    `;
+    this.htmlRef.innerHTML = `
+    <div class="modal">
+      <h2 class="modal--title">${this.title}</h2>
+      <p class="modal--message">${this.message}</p>
+    </div>
+    `;
   }
+  // `\n    <div class=\"modal\">\n      <h2 class=\"modal--title\">${this.title}</h2>\n      <p class=\"modal--message\">${this.message}</p>\n    </div>\n    `; was my previous solution.
   /**
    * A method that toggles a CSS class to either show or hide the modal.
    * The second will need to be called displayModal().
